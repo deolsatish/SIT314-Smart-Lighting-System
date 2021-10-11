@@ -1,9 +1,15 @@
 $('#navbar').load('navbar.html');
 $('#footbar').load('footer.html');
 
-const USER_SERVICE_URL = 'http://accountserviceloadbalancer-447041774.us-east-1.elb.amazonaws.com:5000/api';
+// const USER_SERVICE_URL = 'http://accountserviceloadbalancer-447041774.us-east-1.elb.amazonaws.com:5000/api';
 
-const DEVICE_SERVICE_URL = 'http://deviceserviceloadbalancer-317546385.us-east-1.elb.amazonaws.com:5010/api';
+// const DEVICE_SERVICE_URL = 'http://deviceserviceloadbalancer-317546385.us-east-1.elb.amazonaws.com:5010/api';
+
+
+const USER_SERVICE_URL = 'http://localhost:5000/api';
+
+const DEVICE_SERVICE_URL = 'http://localhost:5010/api';
+
 
 
 //const API_URL = 'http://localhost:5000/api';

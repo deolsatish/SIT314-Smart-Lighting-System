@@ -21,7 +21,9 @@ app.use(function(req, res, next) {
 
 console.log("API is working");
 
-const MQTT_URL = `http://3.91.247.241:5040`
+const MQTT_URL = `http://localhost:5040`
+
+//const MQTT_URL = `http://3.91.247.241:5040`
 
 
 
