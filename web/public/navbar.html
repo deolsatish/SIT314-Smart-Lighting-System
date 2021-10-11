@@ -1,0 +1,55 @@
+<nav ng-app="navapp" ng-controller="formCtrl" class="navbar navbar-expand-lg navbar-light bg-light" style="justify-content: center;">
+    <div class="pusher">
+        <div class="ui inverted vertical masthead center aligned segment">
+          <br>
+          <div class="ui text container">
+            <h1 class="ui inverted header">
+              Smart Lighting System
+            </h1>
+          </div>
+          <div class="ui container">
+            <div class="ui large secondary inverted pointing menu">
+              <div class="left item">
+              <a id="1" class="ui active item" href="/"><i class="home icon"></i> Home</a>
+              <a id="1" class="item" href="/Smart-Light-Devices-List"><i class="list alternate icon"></i>Overview</a>
+              <a id="2" class="item" href="/register-device"><i class="desktop icon"></i> Register Device</a>
+              <a id="3" class="item"  href="/send-command"><i class="desktop icon"></i> Send-Command</a>
+              <a id="4" class="item" href="/notifications"><i class="bell outline icon"></i> Notifications</a>
+            </div>
+              <div class="right item">
+                <div id='auth-nav'></div>
+              </div>
+              
+            </div>
+          </div>
+      
+          <!-- <div class="ui text container">
+            <h1 class="ui inverted header">
+              Imagine-a-Company
+            </h1>
+            <h2>Do whatever you want when you want to.</h2>
+            <div class="ui huge primary button">Get Started <i class="right arrow icon"></i></div>
+          </div> -->
+          
+        </div>
+    
+</nav>
+<script>
+    const isAuthenticated1 = localStorage.getItem('isAuthenticated');
+    const currentUser1 = localStorage.getItem('user');
+    // const logoutElement = '<a class="nav-item nav-link" onClick="logout()">Logout</a>';
+    // const loginElement = '<a class="nav-item nav-link"  href="/login">Login</a>';
+    const logoutElement = `<div id="usernamedisplay" class="ui inverted teal button"><i class="ui user circle icon"></i>Username : ${currentUser1}</div> <a class="ui inverted orange button" id="logout" onClick="logout()">Logout</a> `;
+    const loginElement = `<a class="ui inverted button"  href="/login">Login</a> `;
+    if (isAuthenticated1) {
+    $('#auth-nav').append(logoutElement);
+    }
+    else {
+    $('#auth-nav').append(loginElement);
+    }
+
+</script>
+
+</div>
+</div>
+</nav>

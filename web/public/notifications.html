@@ -1,0 +1,104 @@
+<html>
+  <head>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.0/angular.min.js"></script>
+  <script type="text/javascript" src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.js" integrity="sha512-dqw6X88iGgZlTsONxZK9ePmJEFrmHwpuMrsUChjAw1mRUhUITE5QU9pkcSox+ynfLhL15Sv2al5A0LVyDCmtUw==" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css" integrity="sha512-8bHTC73gkZ7rZ7vpqUQThUDhqcNFyYi2xgDgPDHc+GXVGHXq+xPjynxIopALmOPqzo9JZj0k6OqqewdGO3EsrQ==" crossorigin="anonymous" />
+  <link rel="stylesheet" href="login.css">
+    
+<meta charset="utf-8" />
+<meta name="description" content="A frontend dashboard for the Smart Lighting System application" />
+<meta name="ADV" content="ADV" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Smart Lighting System</title>
+</head>
+<body>
+<div class="container">
+    <div id="navbar"></div>
+    <br>
+    <br>
+    <br>
+    <div ng-app="notifyapp" ng-controller="formCtrl" class="ui ui middle aligned center aligned container" novalidate> 
+        
+        <div class="ui stacked secondary segment">
+            <h2 class="ui teal image header">
+                <i class="bell outline icon"></i>
+                <div class="content">
+                  Notifications
+                </div>
+              </h2>
+            <div class="ui relaxed divided list">             
+                <div class="ui info message" ng-repeat= "x in notlist">
+                    <i class="close icon" id="close" ng-click="deletenotification($index)"></i>
+                    <div class="header">
+                        {{x.title}} 
+                    </div>
+                    <p>T{{x.description}}</p>
+                  </div>            
+            </div>
+        </div>
+    </div> 
+</div>
+    <script>
+        //These functions show notification count in title bar and desktop
+        const notifications = [];
+        
+        //Adds notification
+        function addNotification (notification) {
+            notifications.push(notification);
+            showNotificationCount(notifications.length);
+        }
+        //Removes notification
+        function removeNotification (notification) {
+            notifications.shift();
+            showNotificationCount(notifications.length);
+        }
+        //Shows notification
+        function showNotificationCount (count) {
+            //Looks for: (n)
+            const pattern = /^\(\d\)/;
+
+            if (count === 0 || pattern.test(document.title)) {
+                document.title = document.title.replace(pattern, count === 0 ? "" : "(" + count + ")");
+            } else {
+                document.title = "(" + count + ")" + document.title
+            }
+        }
+        //Desktop notification
+        function showNotification() {
+            const notifcation = new Notification("Notifcations have been enabled", {
+                body: "Working",
+            });
+
+            //When you click on notifcation it will remove notication number at top
+            notifcation.onclick = (e) => {
+                removeNotification();
+            }
+        }
+        
+        //Notification permissions 
+        if (Notification.permission === "granted") {
+            addNotification();
+            showNotification();
+        } else if (Notification.permission !== "denied") {
+            Notification.requestPermission().then(permission => {
+                if (permission === "granted") {
+                    addNotification();
+                    showNotification();
+                }
+            })
+        }
+        
+        //Shows permission in dev console
+        console.log(Notification.permission);
+    </script>
+<br>
+<br>
+<br>
+<div style="text-align: center;", id="footbar"></div>
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+<script src="/controllers/notify.js"></script>
+<script src="app.js"></script>
+
+</body>

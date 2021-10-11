@@ -1,0 +1,156 @@
+<html>
+<head>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.0/angular.min.js"></script>
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.js" integrity="sha512-dqw6X88iGgZlTsONxZK9ePmJEFrmHwpuMrsUChjAw1mRUhUITE5QU9pkcSox+ynfLhL15Sv2al5A0LVyDCmtUw==" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css" integrity="sha512-8bHTC73gkZ7rZ7vpqUQThUDhqcNFyYi2xgDgPDHc+GXVGHXq+xPjynxIopALmOPqzo9JZj0k6OqqewdGO3EsrQ==" crossorigin="anonymous" />
+<link rel="stylesheet" href="login.css">
+<style type="text/css">
+    body {
+      background-color: #DADADA;
+    }
+    body > .grid {
+      height: 100%;
+    }
+    .image {
+      margin-top: -100px;
+    }
+    .column {
+      max-width: 450px;
+    }
+  </style>
+<meta charset="utf-8" />
+<meta name="description" content="A frontend dashboard for the Smart Lighting System application" />
+<meta name="author" content="Deol Satish" />
+<meta name="viewport" content="width=device-width", initial-
+scale=1.0>
+<title>Smart Lighting System</title>
+</head>
+<body>
+    <div class="container">
+        <div id="navbar"></div>
+    </div>
+    <br>
+    <br>
+    <br>
+    <!-- <form ng-app="registerapp" ng-controller="formCtrl" name="myForm" novalidate>
+        <label for="username">User:</label>
+        <input type="text" class="form-control" name="username" ng-model="username" required>
+        <span style="color:red" ng-show="myForm.username.$dirty && myForm.username.$invalid">
+            <span ng-show="myForm.username.$error.required">Username is required.</span>
+        </span>
+        <br>
+        <br>
+        <label for="password">Password:</label>
+        <div class ="input-group mb-3">
+            <input type="password" class="form-control" name="password" ng-model="password" required passwordvalidation>
+            <div class="input-group-append">
+                <span class ="input-group-text" >{{grade()}}</span>
+            </div>
+        </div>
+        <span style="color:red" ng-show="myForm.password.$dirty && myForm.password.$invalid">
+            <span ng-show="myForm.password.$error.required">Password is required</span>
+        </span>
+        <br>
+        <span style="color:green" ng-show="myForm.password.$dirty && !(password.length>=8)">Password must be greater than 8 characters.</span>
+        <br>
+        <br>
+        <label for="confirm">Confirm Password :</label>
+        <input type="password" class="form-control" name="confirm" ng-model="confirm" required>
+        <span style="color:red" ng-show="myForm.confirm.$dirty && myForm.confirm.$invalid">
+            <span ng-show="myForm.confirm.$error.required">Password is required.</span>
+        </span>
+        <br>
+        <span style="color:darkgoldenrod" ng-show="password !=confirm">
+            <span>Password's do not match.</span>
+        </span>
+        <br>
+        <br>
+        <button ng-click="register()" class="btn btn-success" id="register" ng-disabled="(myForm.username.$dirty && myForm.username.$invalid) ||  
+        (myForm.password.$dirty && myForm.password.$invalid) ||  (myForm.confirm.$dirty && myForm.confirm.$invalid)  || (password !=confirm) ">Register</button>
+        <br>
+        <br>
+        <p><a href="login.html"> Have an account? Login here.</a></p>
+        <div class="message" id="message"></div>
+        <div ng-include="'footer.html'"></div>
+        <br>
+    </form> -->
+    <div class="ui middle aligned center aligned container"> 
+        <h2 class="ui teal image header">
+            <!-- <img src="./Login Example - Semantic_files/logo.png" class="image"> -->
+            <i class="user outline icon"></i>
+            <div class="content">
+              Sign Up Here
+            </div>
+          </h2>
+        <form class="ui form"ng-app="registerapp" ng-controller="formCtrl" name="myForm" novalidate> 
+            
+            <div class="ui stacked secondary  segment">
+                <div class="field">
+                  <div class="ui left icon input">
+                    <i class="user icon"></i>
+                    <input type="text" class="form-control" name="username" placeholder="Username" ng-model="username" required>
+                    <div class="ui left pointing label"style="color:red" ng-show="myForm.username.$dirty && myForm.username.$invalid">
+                        <span ng-show="myForm.username.$error.required">Username is required.</span>
+                </div>
+                  </div>
+                </div>
+                <div class="field">
+                  <div class="ui left icon input">
+                    <i class="lock icon"></i>
+                    <input type="password" class="form-control" name="password" placeholder="Password" ng-model="password" required>
+                    <div class="ui left pointing label" style="color:green" >
+                        <!-- <span ng-show="myForm.password.$error.required">Password is required.</span> -->
+                        <span id="grade" >{{grade()}}</span>
+                    </div>
+                  </div>
+                </div>
+                <div class="field">
+                    <div class="ui left icon input">
+                      <i class="lock icon"></i>
+                      <input type="password" class="form-control" name="confirm" placeholder="Confirm Password" ng-model="confirm" required>
+                      <div class="ui left pointing label"style="color:darkgoldenrod" ng-show="password !=confirm">
+                        <span id="match">Password's do not match.</span>
+                      </div>
+                    </div>
+                </div>
+                <div class="field">
+                  <div class="ui left icon input">
+                    <i class="envelope icon"></i>
+                    <input type="email" class="form-control" name="mail" placeholder="Email ID" ng-model="email" required>
+                    <div class="ui left pointing label"style="color:red" ng-show="myForm.mail.$dirty && myForm.mail.$invalid">
+                        <span ng-show="myForm.mail.$error.required">Email is required.</span>
+                </div>
+                  </div>
+                </div>
+                  
+
+                <button ng-click="register()" class="ui fluid large teal submit button" id="register" ng-disabled="myForm.username.$dirty && myForm.username.$invalid ||  myForm.password.$dirty && myForm.password.$invalid || !username.length || !password.length || !confirm.length || (password !=confirm) || (password.length<8)">Register </button>
+                <div class="ui error message"></div>
+            </div>
+            <div>
+                <span class="ui message" style="color:green" id="passerror" ng-show="myForm.password.$dirty && !(password.length>=8)">Password must be greater than 8 characters.</span>
+            </div>
+              
+            <div>
+              <div class="message" id="message">
+               </div> 
+              </div>
+            
+            </div>
+              
+            
+            </div>
+            <br>
+            <br>
+            
+        </form> 
+    </div>
+    <div style="text-align: center;", id="footbar"></div>
+    <br>
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script type="text/javascript" src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+    <script src="app.js"></script>
+    <script src="/controllers/register.js"></script>
+    </body>
+</html>
